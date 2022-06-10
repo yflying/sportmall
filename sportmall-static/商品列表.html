@@ -1,0 +1,546 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>商品列表</title>
+<meta name="description" content="这是一个 index 页面">
+<meta name="keywords" content="index">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="icon" type="image/png" href="assets/i/favicon.png">
+<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="assets/css/admin.css">
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/app.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!--<link rel="stylesheet" href="static/css/bootstrap.css" />-->
+<script src="static/js/utils.js"></script>
+</head>
+<body>
+<!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+
+
+
+
+
+
+</head>
+
+<body>
+<header class="am-topbar admin-header">
+  <div class="am-topbar-brand"><img src="assets/i/logo.png"></div>
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+    <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
+
+   <li class="am-dropdown tognzhi" data-am-dropdown>
+  <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 消息管理<span class="am-badge am-badge-danger am-round">6</span></button>
+  <ul class="am-dropdown-content">
+  	
+  	
+  	
+    <li class="am-dropdown-header">所有消息都在这里</li>
+
+    
+
+    <li><a href="#">未激活会员 <span class="am-badge am-badge-danger am-round">556</span></a></li>
+    <li><a href="#">未激活代理 <span class="am-badge am-badge-danger am-round">69</span></a></a></li>
+    <li><a href="#">未处理汇款</a></li>
+    <li><a href="#">未发放提现</a></li>
+    <li><a href="#">未发货订单</a></li>
+    <li><a href="#">低库存产品</a></li>
+    <li><a href="#">信息反馈</a></li>
+    
+    
+    
+  </ul>
+</li>
+
+ <li class="kuanjie">
+ 	
+ 	<a href="#">会员管理</a>          
+ 	<a href="#">奖金管理</a> 
+ 	<a href="#">订单管理</a>   
+ 	<a href="#">产品管理</a> 
+ 	<a href="#">个人中心</a> 
+ 	 <a href="#">系统设置</a>
+ </li>
+
+ <li class="soso">
+ 	
+<p>   
+	
+	<select data-am-selected="{btnWidth: 70, btnSize: 'sm', btnStyle: 'default'}">
+          <option value="b">全部</option>
+          <option value="o">产品</option>
+          <option value="o">会员</option>
+          
+        </select>
+
+</p>
+
+<p class="ycfg"><input type="text" class="am-form-field am-input-sm" placeholder="圆角表单域" /></p>
+<p><button class="am-btn am-btn-xs am-btn-default am-xiao"><i class="am-icon-search"></i></button></p>
+ </li>
+
+
+
+
+      <li class="am-hide-sm-only" style="float: right;"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="am-cf admin-main"> 
+
+
+ <div class="nav-navicon admin-main admin-sidebar">
+    
+    
+    <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员</div>
+    <div class="sideMenu" style="font-size: 1.4rem;">
+    	<h3 class="am-icon-users"><em></em> <a href="#">用户管理</a></h3>
+      <ul>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="用户列表.html">用户列表</a></li>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="添加用户.html">添加用户</a></li>
+      </ul>
+      <h3 class="am-icon-flag on"><em></em> <a href="#">商品管理</a></h3>
+      <ul>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="商品列表.html">商品列表</a></li>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="添加新商品.html">添加新商品</a></li>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="商品统计.html">商品统计</a></li>
+      </ul>
+        <h3 class="am-icon-gears"><em></em> <a href="#">商品分类管理</a></h3>
+      <ul>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="商品分类.html">商品分类</a></li>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="添加商品分类.html">添加商品分类</a></li>       
+      </ul>    
+      <h3 class="am-icon-cart-plus"><em></em> <a href="订单列表.html"> 订单管理</a></h3>
+      <ul>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="订单列表.html">订单列表</a></li>
+ 				 <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="订单统计.html">订单统计</a></li>
+      </ul>
+      <h3 class="am-icon-volume-up"><em></em> <a href="#">评论管理</a></h3>
+      <ul>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="评论列表.html">评论列表</a></li>
+ 				 <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="评论统计.html">评论统计</a></li>
+      </ul>
+    
+    </div>
+    <!-- sideMenu End --> 
+    
+   <script type="text/javascript">
+			jQuery(".sideMenu").slide({
+				titCell:"h3", //鼠标触发对象
+				targetCell:"ul", //与titCell一一对应，第n个titCell控制第n个targetCell的显示隐藏
+				effect:"slideDown", //targetCell下拉效果
+				delayTime:300 , //效果时间
+				triggerTime:150, //鼠标延迟触发时间（默认150）
+				defaultPlay:true,//默认是否执行效果（默认true）
+				returnDefault:true //鼠标从.sideMen移走后返回默认状态（默认false）
+				});
+		</script> 
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+<div class=" admin-content">
+	
+		<div class="daohang">
+			<ul>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 首页 </li>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs">用户管理<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a></button></li>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs">商品管理<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a></button></li>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs">订单管理<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a></button></li>
+				
+				
+			</ul>
+
+       
+
+	
+</div>
+	
+	
+
+
+<div class="admin-biaogelist">
+	
+    <div class="listbiaoti am-cf">
+      <ul class="am-icon-flag on"> 商品列表</ul>
+      
+      <dl class="am-icon-home" style="float: right;"> 当前位置： 首页 > <a href="商品列表.html">商品列表</a></dl>
+      
+      <dl>
+        
+      </dl>
+      
+      
+    </div>
+	 <div id="container">
+
+<div class="box-container-bottom" style="margin-bottom: 15px;">
+<div style="background-color: white; margin-left: 12px; margin-right: 12px;">
+			  <el-input v-model="keywords"
+			    placeholder="请输入内容"
+			    prefix-icon="el-icon-search" @keyup.enter.native="search"  style="width: 300px;  margin-top: -2px; ">
+			  </el-input>
+</div>
+	<el-table  :data="products"  border fit highlight-current-row>
+
+					      <el-table-column
+					        label="序号"
+					        width="100"
+					        align="center">
+					        <template slot-scope="scope">
+					          {{ (pageNum - 1) * limit + scope.$index + 1 }}
+					        </template>
+					      </el-table-column>
+					      <el-table-column label="商品名称" width="300">
+					        <template slot-scope="scope">
+					          {{scope.row.productName}}
+					        </template>
+					      </el-table-column>					
+					
+					      <el-table-column label="商品图片" width="250">
+					        <template slot-scope="scope">
+					        	<img :src="'static/pimgs/'+scope.row.skus[0].skuImg" style="width: 200px;" />		
+					        </template>
+					      </el-table-column>
+					
+					      <el-table-column label="累计销量" width="150">
+					        <template slot-scope="scope">
+					          {{scope.row.soldNum}}
+					        </template>
+					      </el-table-column>
+					      <el-table-column label="添加时间" width="260">
+					        <template slot-scope="scope">
+					          {{scope.row.createTime | time}}
+					         
+					        </template>
+					      </el-table-column>
+					      <el-table-column  label="操作" sortable width="260">
+
+					      	<template slot-scope="scope">
+
+										<el-button size="small" type="primary"  @click="dianji(scope.row)" >查看</el-button>
+
+										  <el-dialog title="商品细节" :visible.sync="outerVisible" :append-to-body='true'>
+												<el-descriptions class="margin-top" :column="2" :size="size" border>
+												    <el-descriptions-item label="产地">
+														 <span>{{productParams.productPlace}}</span>
+												    </el-descriptions-item>
+												    <el-descriptions-item label="系带方式">
+											        <span>{{productParams.clog}}</span>
+												    </el-descriptions-item>
+												    <el-descriptions-item label="品牌名">
+														 <span>{{productParams.brand}}</span>												    															    	
+												    </el-descriptions-item>
+												    <el-descriptions-item label="生产厂名">
+														 <span>{{productParams.factoryName}}</span>							    	
+												    </el-descriptions-item>
+												    <el-descriptions-item label="生产厂址">
+														 <span>{{productParams.factoryAddress}}</span>						    	
+												    </el-descriptions-item>		
+												    <el-descriptions-item label="功能">
+														 <span>{{productParams.function}}</span>											    	
+												    </el-descriptions-item>
+												    <el-descriptions-item label="商品毛重">
+														 <span>{{productParams.weight}}</span>							    	
+												    </el-descriptions-item>
+												    <el-descriptions-item label="商品细节">
+														 <span>{{productParams.details}}</span>												    	
+												    </el-descriptions-item>
+												  </el-descriptions>
+
+									    <el-dialog
+									      width="60%"
+									      title="商品套餐"
+									      :visible.sync="innerVisible"
+									      append-to-body>
+										  	  <el-table :data="productSkus" border fit highlight-current-row>
+												    <el-table-column  label="序号" width="50">
+												    	<template slot-scope="scope">
+											          {{scope.row.skuId}}
+											        </template>
+												    </el-table-column>
+												    <el-table-column label="套餐名称" width="200">
+												    	<template slot-scope="scope">
+											          {{scope.row.skuName}}
+											        </template>												    	
+												    </el-table-column>
+												    <el-table-column  label="售价"  width="100">
+												    	<template slot-scope="scope">
+											          {{scope.row.sellPrice}}
+											        </template>															    	
+												    </el-table-column>
+												    <el-table-column label="库存" width="100">
+												    	<template slot-scope="scope">
+											          {{scope.row.stock}}
+											        </template>															    	
+												    </el-table-column>
+												    <el-table-column label="属性组合">
+												    	<template slot-scope="scope">
+											          {{scope.row.untitled}}
+											        </template>															    	
+												    </el-table-column>															    
+												  </el-table>									      
+									    </el-dialog>
+									    <div slot="footer" class="dialog-footer">
+									      <el-button @click="outerVisible = false">取 消</el-button>
+									      <el-button type="primary" @click="innerVisible = true">商品套餐详情</el-button>
+									    </div>
+									  </el-dialog>
+									
+									<template v-if="scope.row.productStatus == '0'" >
+										<el-button type="warning" size="small" style="margin-left: 10px;" @click="shangjia(scope.row) " >上架</el-button>
+									</template>
+									<template v-if="scope.row.productStatus == '1'">
+										<el-button  size="small" style="margin-left: 10px;" @click="xiajia(scope.row) " type="success" >下架</el-button>
+									</template>
+
+									<el-button type="danger" size="small" @click="shanchu(scope.row) " style="margin-left: 10px;" >删除</el-button>
+									</template>
+									
+									</el-table-column>
+
+					    </el-table>
+<div style="text-align: center">
+							<el-pagination background layout="prev, pager, next" 
+               :current-page="pageNum"
+               :page-size="limit" 
+               :total="count" @current-change="pager" > </el-pagination>
+</div>
+
+</div>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]--> 
+
+<!--[if (gte IE 9)|!(IE)]><!--> 
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+		<script type="text/javascript" src="static/js/cookie_utils.js" ></script>
+		<script type="text/javascript" src="static/js/axios.min.js" ></script>
+		<script type="text/javascript" src="static/js/vue.js" ></script>
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script type="text/javascript" src="static/js/base.js" ></script>
+		<script type="text/javascript">
+			var v = new Vue({
+				el:"#container",
+				data:{
+					pageNum:1,
+					limit:5,
+					products:[],
+					count:0,
+					keywords:"",
+					outerVisible: false,
+					innerVisible: false,
+					productId:"",
+					productParams:[],
+					productSkus:[],
+					size:'',
+				},
+				created:function(){
+					//1.加载页面，请求订单信息
+					var url1 = baseUrl+"product/list-all";
+					axios({
+						url:url1,
+						method:"get",
+						params:{
+							pageNum:this.pageNum,
+							limit:this.limit
+						}
+					}).then((res)=>{
+						console.log(res.data.data);
+						if(res.data.code == 10000){
+							var map = res.data.data
+							this.products = map.list;
+							this.count = map.count;
+						}
+					});
+				},
+				methods:{
+					
+					pager:function(page){
+
+						this.pageNum = page;
+						//1.加载页面，请求订单信息
+						var url1 = baseUrl+"product/list-all";
+						var obj = {
+								pageNum:this.pageNum,
+								limit:this.limit
+						};
+						if(this.keywords!=null){
+							obj.keywords = this.keywords;
+						}
+						console.log(obj)
+						axios({
+							url:url1,
+							method:"get",
+							params:{
+								pageNum:obj.pageNum,
+																	limit:obj.limit,
+																	keyword:obj.keywords
+							}
+						}).then((res)=>{
+							console.log(res.data.data);
+							if(res.data.code == 10000){
+								this.products = res.data.data.list;
+								this.count = res.data.data.count;
+							}
+						});
+					},
+					  search(){
+						 	  // 控制一下，如果用户没输入东西就不去搜索
+						   if(this.keywords != null){
+						    // 把searchData带着，发请求获取有关联的数据并呈现在页面中
+						    						this.pageNum = 1;
+															var url1 = baseUrl+"product/list-all";
+															axios({
+																url:url1,
+																method:"get",
+																params:{
+																	pageNum:this.pageNum,
+																	limit:this.limit,
+																	keyword:this.keywords
+																}
+															}).then((res)=>{
+																console.log(res.data.data);
+																if(res.data.code == 10000){
+																	this.products = res.data.data.list;
+																	this.count = res.data.data.count;
+																}
+															});	
+						   }
+						  },
+						  dianji(val){
+						  			this.productId=val.productId;
+										var url1 = baseUrl+"product/detail-info/"+this.productId;
+									 axios.get(url1).then((res)=>{
+										var map = res.data.data;
+										this.productSkus = map.productSkus;
+										
+									});						  			
+										var url2 = baseUrl+"product/detail-params/"+this.productId;
+										axios.get(url2).then((res)=>{
+											this.productParams = res.data.data;
+											console.log(this.productParams)
+										});	
+										this.outerVisible=true;
+									
+						  	
+						  },
+						 shanchu(val){
+							this.$confirm('是否确认删除商品?', '提示', {
+							         cancelButtonText: '取消',							         
+							         confirmButtonText: '确定',
+							          type: 'warning'
+							        }).then(() => {
+							       
+							    this.productId=val.productId;
+										var url3 = baseUrl+"product/deleteProduct/"+this.productId;
+									 axios.get(url3).then((res)=>{
+									});	
+							          this.$message({
+							            type: 'success',
+							            message: '删除成功!'
+							          });
+									 setTimeout(function (){
+										window.location.href="商品列表.html";
+									}, 500);		          
+							        }).catch(() => {
+							          this.$message({
+							            type: 'info',
+							            message: '已取消删除'
+							          });          
+							        });
+						  },  
+						 xiajia(val){
+							this.$confirm('是否下架该商品?', '提示', {
+							         cancelButtonText: '取消',							         
+							         confirmButtonText: '确定',
+							       }).then(() => {
+							    this.productId=val.productId;
+										var url4 = baseUrl+"product/downProduct/"+this.productId;
+									 axios.get(url4).then((res)=>{
+									});	
+							          this.$message({
+							            type: 'success',
+							            message: '下架成功!'
+							          });
+									 setTimeout(function (){
+										window.location.href="商品列表.html";
+									}, 500);		          
+							        }).catch(() => {
+							          this.$message({
+							            type: 'info',
+							            message: '已取消下架'
+							          });          
+							        });
+						  }, 
+						  
+						 shangjia(val){
+							    this.productId=val.productId;
+										var url5 = baseUrl+"product/onProduct/"+this.productId;
+									 axios.get(url5).then((res)=>{
+									});	
+							          this.$message({
+							            type: 'success',
+							            message: '上架成功!'
+							          });
+									 setTimeout(function (){
+										window.location.href="商品列表.html";
+									}, 500);		          
+
+						  },  											  
+				},
+				
+				filters: {
+            time: (value) => {
+            	return rTime(value);
+            }
+      },
+      watch:{
+				  // 监听input输入框，若没东西了，就回复默认状态
+				  keywords:function(newnew,oldold){
+				   if(newnew == ""){
+				    // 发请求回到初始列表数据状态
+				    console.log("搜索框没东西了，回复初始状态");
+				   }
+				  }
+				 },
+});
+
+		</script>
+
+
+</body>
+</html>

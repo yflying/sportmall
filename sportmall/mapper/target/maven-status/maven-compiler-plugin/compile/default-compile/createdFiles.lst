@@ -1,0 +1,14 @@
+com\cdu\edu\sportmall\dao\OrdersMapper.class
+com\cdu\edu\sportmall\dao\UsersMapper.class
+com\cdu\edu\sportmall\dao\UserLoginHistoryMapper.class
+com\cdu\edu\sportmall\dao\ProductMapper.class
+com\cdu\edu\sportmall\dao\ProductCommentsMapper.class
+com\cdu\edu\sportmall\dao\ProductSkuMapper.class
+com\cdu\edu\sportmall\dao\OrderItemMapper.class
+com\cdu\edu\sportmall\general\GeneralDao.class
+com\cdu\edu\sportmall\dao\IndexImgMapper.class
+com\cdu\edu\sportmall\dao\ShoppingCartMapper.class
+com\cdu\edu\sportmall\dao\ProductParamsMapper.class
+com\cdu\edu\sportmall\dao\CategoryMapper.class
+com\cdu\edu\sportmall\dao\ProductImgMapper.class
+com\cdu\edu\sportmall\dao\UserAddrMapper.class

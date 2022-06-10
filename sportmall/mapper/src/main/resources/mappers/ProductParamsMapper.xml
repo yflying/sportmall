@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdu.edu.sportmall.dao.ProductParamsMapper">
+  <resultMap id="BaseResultMap" type="com.cdu.edu.sportmall.entity.ProductParams">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="param_id" jdbcType="VARCHAR" property="paramId" />
+    <result column="product_id" jdbcType="VARCHAR" property="productId" />
+    <result column="product_place" jdbcType="VARCHAR" property="productPlace" />
+    <result column="clog" jdbcType="VARCHAR" property="clog" />
+    <result column="brand" jdbcType="VARCHAR" property="brand" />
+    <result column="factory_name" jdbcType="VARCHAR" property="factoryName" />
+    <result column="factory_address" jdbcType="VARCHAR" property="factoryAddress" />
+    <result column="function" jdbcType="VARCHAR" property="function" />
+    <result column="weight" jdbcType="VARCHAR" property="weight" />
+    <result column="details" jdbcType="VARCHAR" property="details" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <select id="selectMaxId" resultType="int">
+    select max(cast(param_id as SIGNED)) from product_params
+  </select>
+
+
+  <select id="selectParamsByProductId" resultMap="BaseResultMap">
+    select  param_id,product_id,product_place, clog,brand,factory_name,factory_address,
+      function,weight,details,create_time,update_time
+    from product_params
+    where product_id = #{productId}
+  </select>
+</mapper>

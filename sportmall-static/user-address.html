@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/app.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!--<link rel="stylesheet" href="static/css/bootstrap.css" />-->
+<script src="static/js/utils.js"></script>		
+	</head>
+	<body>
+ 
+<div id="container">
+<div class="box-container-bottom" style="margin-bottom: 15px;">
+<div style="background-color: #FFFFFF; width: 800px ; height: 500px;">
+<el-table  :data="addrs"  border fit highlight-current-row>
+	      <el-table-column
+	        label="序号"
+	        width="60"
+	        align="center">
+	        <template slot-scope="scope">
+	          {{scope.row.addrId }}
+	        </template>
+	      </el-table-column>
+	      <el-table-column label="收件人姓名" width="110">
+	        <template slot-scope="scope">
+	          {{scope.row.receiverName}}
+	 
+	        </template>
+	      </el-table-column>
+					<el-table-column label="手机号" width="140">
+	        <template slot-scope="scope">
+	          {{scope.row.receiverMobile}}
+	        </template>
+	      </el-table-column>
+					<el-table-column label="省份" width="80">
+	        <template slot-scope="scope">
+	          {{scope.row.province}}
+	        </template>
+	      </el-table-column>
+	
+	      <el-table-column label="地区" width="80">
+	        <template slot-scope="scope">
+	          {{scope.row.area}}
+	        </template>
+	      </el-table-column>
+	      <el-table-column label="详细地址" width="120">
+	        <template slot-scope="scope">
+	          {{scope.row.addr}}
+	        </template>
+	      </el-table-column>
+	      <el-table-column  label="操作" sortable width="206">
+
+	      	<template slot-scope="scope">				  
+					<el-button size="small" type="success"    style="margin-left: 10px;" @click="bianji(scope.row) ">编辑</el-button>
+					<el-dialog title="修改用户地址" :visible.sync="dialogFormVisible" :append-to-body='true'>
+					  <el-form :model="updateUserAddrForm" ref="updateUserAddrForm" inline   size="mini" :label-position="labelPosition">
+					    
+					    <el-form-item label="收件人姓名" prop="receiverName"  style="width: 150px;">
+					      <el-input v-model="updateUserAddrForm.receiverName" size="mini" ></el-input>
+					    </el-form-item>
+					    <el-form-item label="手机号"  prop="receiverMobile" style="width: 150px;">
+					      <el-input v-model="updateUserAddrForm.receiverMobile"></el-input>
+					    </el-form-item>
+					    <el-form-item label="省份"  prop="province" style="width: 100px;">
+					      <el-input v-model="updateUserAddrForm.province" ></el-input>
+					   </el-form-item>
+					    <el-form-item label="城市"  prop="city" style="width: 100px;">
+					      <el-input v-model="updateUserAddrForm.city" ></el-input>
+					   </el-form-item>					   
+					    <el-form-item label="区域" prop="area" style="width: 100px;">
+					      <el-input v-model="updateUserAddrForm.area"></el-input>
+					     </el-form-item>
+					    <el-form-item label="详细地址" prop="addr" style="width: 150px;">
+					      <el-input v-model="updateUserAddrForm.addr"></el-input>
+					     </el-form-item>
+					    <el-form-item label="邮编" prop="postCode" style="width: 150px;">
+					      <el-input v-model="updateUserAddrForm.postCode"></el-input>
+					     </el-form-item>					     
+					  </el-form>
+					  
+					  <div slot="footer" class="dialog-footer">
+
+					    <el-button type="primary" @click="submitForm('updateUserAddrForm')" plain>确 定</el-button>
+						    <el-button @click="dialogFormVisible = false">取 消</el-button>											    
+					  </div>
+					</el-dialog>
+					<el-button type="danger" size="small" @click="shanchu(scope.row) " style="margin-left: 10px;">删除</el-button>
+					</template>
+					</el-table-column>
+
+	   </el-table>
+</div>
+</div>
+</div>
+					    
+
+		<script type="text/javascript" src="static/js/cookie_utils.js" ></script>
+		<script type="text/javascript" src="static/js/axios.min.js" ></script>
+		<script type="text/javascript" src="static/js/vue.js" ></script>
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script type="text/javascript" src="static/js/base.js" ></script>
+		<script type="text/javascript">
+			
+			var v = new Vue({
+				el:"#container",
+				data:{
+					addrs:[],
+					updateUserAddrForm:{
+						addrId:'',
+						userId:'',
+						receiverName:'',
+						receiverMobile:'',
+						province:'',
+						city:'',
+						area:'',
+						addr:'',
+						postCode:'',
+						status:'',
+						commonAddr:'',
+						createTime:'',
+						updateTime:'',
+					},
+					rules:{
+						
+					},
+					userAddrDetail:{},
+					labelPosition:'left',
+					addrIndex:0,  //用户选择的地址的索引（默认值和当前用户地址的默认地址索引相同）					
+
+					dialogFormVisible:false,					
+				},
+				created:function(){
+					//1.加载页面，请求订单信息
+					var userId = getCookieValue("userId");
+					var token = getCookieValue("token");		
+					var url1 = baseUrl+"useraddr/list";
+					axios({
+						url:url1,
+						method:"get",
+						params:{
+							userId:userId
+						},
+						headers:{
+							token:token
+						}
+					}).then((res)=>{
+						if(res.data.code == 20001 || res.data.code == 20002){
+							//跳转登录
+						}else if(res.data.code == 10000){
+							//请求成功  [{commonType:0},{commonType:1}]
+							this.addrs = res.data.data;
+							
+							//this.addrIndex的值 等于 当前用户的默认收货地址的索引
+							for(var i=0; i<this.addrs.length; i++){
+								if(this.addrs[i].commonAddr == 1){
+									this.addrIndex = i;
+								}
+							}
+						}
+					});
+				},
+				methods:{
+				
+						   bianji(val){
+						   	var token = getCookieValue("token");
+						  			this.addrId=val.addrId;
+										var url1 = baseUrl+"useraddr/details/";
+				axios({
+							url:url1,
+							method:"get",
+							headers:{
+								token:token
+							},
+							params:{
+								addrId:this.addrId
+							}
+						}).then((res)=>{
+									 	this.userAddrDetail=res.data.data;
+									 	this.userAddrDetail=this.userAddrDetail[0];
+									 	this.updateUserAddrForm.addrId=this.userAddrDetail.addrId;
+									 this.updateUserAddrForm.userId=this.userAddrDetail.userId;
+									 this.updateUserAddrForm.receiverName=this.userAddrDetail.receiverName;
+									 this.updateUserAddrForm.receiverMobile=this.userAddrDetail.receiverMobile;
+									 this.updateUserAddrForm.province=this.userAddrDetail.province;
+									 this.updateUserAddrForm.city=this.userAddrDetail.city;
+									  this.updateUserAddrForm.area=this.userAddrDetail.area;
+									   this.updateUserAddrForm.addr=this.userAddrDetail.addr;
+									    this.updateUserAddrForm.postCode=this.userAddrDetail.postCode;
+									    this.updateUserAddrForm.status=this.userAddrDetail.status;
+									    this.updateUserAddrForm.commonAddr=this.userAddrDetail.commonAddr;
+									    this.updateUserAddrForm.createTime=this.userAddrDetail.createTime;	
+									    this.updateUserAddrForm.updateTime=this.userAddrDetail.updateTime;										    
+									 	console.log(this.updateUserAddrForm);
+									});		
+
+									 console.log(this.updateUserAddrForm)
+										this.dialogFormVisible=true;
+						  },
+						  
+						
+					shanchu(val){
+							this.$confirm('是否确认删除地址?', '提示', {
+							         cancelButtonText: '取消',							         
+							         confirmButtonText: '确定',
+							          type: 'warning'
+							        }).then(() => {
+							        	this.userId=val.userId;
+										var url1 = baseUrl+"user/deleteUser/"+this.userId;
+									 axios.get(url1).then((res)=>{
+									});	
+							          this.$message({
+							            type: 'success',
+							            message: '删除成功!'
+							          });
+									 setTimeout(function (){
+										window.location.href="用户列表.html";
+									}, 500);							          
+							        }).catch(() => {
+							          this.$message({
+							            type: 'info',
+							            message: '已取消删除'
+							          });          
+							        });
+						  },            
+            submitForm(formName) {
+            	  var token = getCookieValue("token");
+					console.log(this.updateUserAddrForm)
+					var newAddr = {
+						  "addrId": this.updateUserAddrForm.addrId,
+							"userId": this.updateUserAddrForm.userId,
+							"receiverName": this.updateUserAddrForm.receiverName,
+							"receiverMobile": this.updateUserAddrForm.receiverMobile,
+							"province": this.updateUserAddrForm.province,
+								"city": this.updateUserAddrForm.city,
+								"area": this.updateUserAddrForm.area,
+									"addr": this.updateUserAddrForm.addr,			
+									"postCode": this.updateUserAddrForm.postCode,			
+									"status": this.updateUserAddrForm.status,			
+									"commonAddr": this.updateUserAddrForm.commonAddr,		
+									"createTime": this.updateUserAddrForm.createTime,			
+									"updateTime": this.updateUserAddrForm.updateTime,												
+					};
+						var url5 = baseUrl+"useraddr/update"
+						axios({
+							url:url5,
+							method:"post",
+							data:newAddr,
+							headers:{
+								token:token
+							}							
+						})
+       this.$message({
+          message: '修改成功',
+          type: 'success'
+        });
+               this.dialogFormVisible = false;
+               
+				 setTimeout(function (){
+					parent.location.href="user-center.html";
+				}, 500);
+ 
+			
+            },						 
+            
+
+				},
+				
+				filters: {
+            time: (value) => {
+            	return rTime(value);
+            }
+      },
+
+});
+
+		</script>
+
+	</body>
+</html>

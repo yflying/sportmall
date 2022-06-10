@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/app.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!--<link rel="stylesheet" href="static/css/bootstrap.css" />-->
+<script src="static/js/utils.js"></script>		
+	</head>
+	<body>
+ 
+<div id="container">
+<div class="box-container-bottom" style="margin-bottom: 15px;">
+<div style="background-color: #FFFFFF; width: 800px ; height: 500px;">
+	
+ <el-form :model="insertUserAddrForm" ref="insertUserAddrForm" inline   size="mini" :label-position="labelPosition">
+
+<el-form-item label="收件人姓名" prop="receiverName"  style="width: 350px; margin-top: 30px; margin-left: 40px;" >
+  <el-input v-model="insertUserAddrForm.receiverName" size="mini" ></el-input>
+</el-form-item>
+<el-form-item label="手机号"  prop="receiverMobile" style="width: 350px; margin-top: 30px;">
+  <el-input v-model="insertUserAddrForm.receiverMobile"></el-input>
+</el-form-item>
+<el-form-item label="省份"  prop="province" style="width: 200px; margin-left: 40px;">
+  <el-input v-model="insertUserAddrForm.province" ></el-input>
+   </el-form-item>
+<el-form-item label="城市"  prop="city" style="width: 200px;">
+  <el-input v-model="insertUserAddrForm.city" ></el-input>
+   </el-form-item>					   
+<el-form-item label="区域" prop="area" style="width: 200px;">
+  <el-input v-model="insertUserAddrForm.area"></el-input>
+ </el-form-item>
+<el-form-item label="详细地址" prop="addr" style="width: 300px; margin-left: 40px;">
+  <el-input v-model="insertUserAddrForm.addr"></el-input>
+ </el-form-item>
+<el-form-item label="邮编" prop="postCode" style="width: 300px;">
+  <el-input v-model="insertUserAddrForm.postCode"></el-input>
+ </el-form-item>					     
+  </el-form>	
+	<div style="margin-left:200px ;">
+		    <el-button type="primary" @click="submitForm('insertUserAddrForm')" plain>添加地址</el-button>
+		    </div> 
+</div>					  
+</div>
+</div>
+</div>
+					    
+
+		<script type="text/javascript" src="static/js/cookie_utils.js" ></script>
+		<script type="text/javascript" src="static/js/axios.min.js" ></script>
+		<script type="text/javascript" src="static/js/vue.js" ></script>
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script type="text/javascript" src="static/js/base.js" ></script>
+		<script type="text/javascript">
+			
+			var v = new Vue({
+				el:"#container",
+				data:{
+					addrs:[],
+					insertUserAddrForm:{
+						addrId:'',
+						userId:'',
+						receiverName:'',
+						receiverMobile:'',
+						province:'',
+						city:'',
+						area:'',
+						addr:'',
+						postCode:'',
+						status:'',
+						commonAddr:'',
+						createTime:'',
+						updateTime:'',
+					},
+					rules:{
+						
+					},
+					userAddrDetail:{},
+					labelPosition:'left',
+					addrIndex:0,  //用户选择的地址的索引（默认值和当前用户地址的默认地址索引相同）					
+					dialogFormVisible:false,					
+				},
+
+				methods:{
+
+            submitForm(formName) {
+            	 var userId=getCookieValue("userId");
+            	  var token = getCookieValue("token");
+					console.log(this.insertUserAddrForm)
+					var newAddr = {
+						  "addrId": this.insertUserAddrForm.addrId,
+							"userId": userId,
+							"receiverName": this.insertUserAddrForm.receiverName,
+							"receiverMobile": this.insertUserAddrForm.receiverMobile,
+							"province": this.insertUserAddrForm.province,
+								"city": this.insertUserAddrForm.city,
+								"area": this.insertUserAddrForm.area,
+									"addr": this.insertUserAddrForm.addr,			
+									"postCode": this.insertUserAddrForm.postCode,			
+									"status": this.insertUserAddrForm.status,			
+									"commonAddr": this.insertUserAddrForm.commonAddr,		
+									"createTime": this.insertUserAddrForm.createTime,			
+									"updateTime": this.insertUserAddrForm.updateTime,												
+					};
+						var url5 = baseUrl+"useraddr/insert"
+						axios({
+							url:url5,
+							method:"post",
+							data:newAddr,
+							headers:{
+								token:token
+							}							
+						})
+       this.$message({
+          message: '添加成功',
+          type: 'success'
+        });
+        
+				 setTimeout(function (){
+					parent.location.href="user-center.html";
+				}, 500);
+ 
+			
+            },						 
+            
+
+				},
+				
+				filters: {
+            time: (value) => {
+            	return rTime(value);
+            }
+      },
+
+});
+
+		</script>
+
+	</body>
+</html>

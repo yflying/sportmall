@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+<link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="assets/css/admin.css">
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/app.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!--<link rel="stylesheet" href="static/css/bootstrap.css" />-->
+<script src="static/js/utils.js"></script>	
+	</head>
+	<body background="white">
+		<div id="container">
+		<div style="background-color: #FFFFFF; width: 800px ; height: 450px;">
+			<h4>订单信息</h4>
+			<p>订单编号:{{order.orderId}}</p>
+			<hr>
+			<ul>
+				<li v-for="item in order.orderItems" style="list-style-type: none;">
+					<div>
+						<div style="height: 200px;  border: 1px ; width: 600px;">
+						<img :src="'static/pimgs/'+item.productImg" height="200px; " >
+							<el-descriptions-item>{{item.productName}}</el-descriptions-item>
+						</div>
+						<p>
+											</li>
+				
+			</ul>
+ 					<el-form :model="userComment" ref="userComment" label-width="80px"  size="small"  style="display: inline-block;">							
+					<el-form-item label="评价类型" prop="commType" style="width: 500px;">
+					    <el-radio-group v-model="userComment.commType">
+					      <el-radio label="好评" ></el-radio>
+					      <el-radio label="中评"></el-radio>
+					      <el-radio label="差评"></el-radio>
+					    </el-radio-group>
+					  </el-form-item>		
+						</p>
+						<p>
+					<el-form-item label="是否匿名" prop="isAnonymous" style="width: 500px;">
+					    <el-radio-group v-model="userComment.isAnonymous">
+					      <el-radio label="匿名" ></el-radio>
+					      <el-radio label="不匿名"></el-radio>
+					    </el-radio-group>
+					  </el-form-item>		
+						</p>
+					<el-form-item label="评价内容" prop="commContent" style="width: 500px;" >						
+						<el-input
+						  type="textarea"
+						  placeholder="评价内容"
+						  maxlength="30"
+						  show-word-limit
+						   v-model="userComment.commContent" autocomplete="off" style="width: 500px">
+						</el-input>
+						 </el-form-item>
+					</el-form>
+				
+				</div>
+		<el-button type="success" size="small" @click="pingjia() " style="margin-left: 78px;"plain>评价</el-button>
+		</div>
+		</div>
+		<script type="text/javascript" src="static/js/base.js" ></script>
+		<script type="text/javascript" src="static/js/cookie_utils.js" ></script>
+		<script type="text/javascript" src="static/js/axios.min.js" ></script>
+		<script type="text/javascript" src="static/js/vue.js" ></script>
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script type="text/javascript" src="static/js/base.js" ></script>		
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#container",
+				data:{
+					order:{},
+					userComment:{
+						isAnonymous:'',
+						commType:'',
+						commContent:'',
+					},
+				},
+				created:function(){
+					//获取到订单信息
+					var jsonstr = localStorage.getItem("order");
+					if(jsonstr != null){
+						localStorage.removeItem("order");
+						this.order = eval("("+jsonstr+")");
+						console.log(this.order);
+					}
+					
+				},
+				methods:{
+           pingjia() {
+           				var userId = getCookieValue("userId");
+						var url5 = baseUrl+"product/comment"
+						axios({
+							url:url5,
+							method:"post",
+							params:{
+								isAnonymous:this.userComment.isAnonymous,
+								commType:this.userComment.commType,
+								commContent:this.userComment.commContent,
+								orderId:this.order.orderId,
+								userId:userId,
+							}
+						})
+       this.$message({
+          message: '评论成功',
+          type: 'success'
+       });
+
+				 setTimeout(function (){
+					parent.location.href="user-center.html";
+				}, 500);
+ 
+			
+            },			
+				},
+			});
+		</script>
+	</body>
+</html>

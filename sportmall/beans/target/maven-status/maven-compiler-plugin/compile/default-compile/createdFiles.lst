@@ -1,0 +1,13 @@
+com\cdu\edu\sportmall\entity\ProductSku.class
+com\cdu\edu\sportmall\entity\UserLoginHistory.class
+com\cdu\edu\sportmall\entity\ShoppingCart.class
+com\cdu\edu\sportmall\entity\IndexImg.class
+com\cdu\edu\sportmall\entity\ProductImg.class
+com\cdu\edu\sportmall\entity\Category.class
+com\cdu\edu\sportmall\entity\ProductParams.class
+com\cdu\edu\sportmall\entity\OrderItem.class
+com\cdu\edu\sportmall\entity\Orders.class
+com\cdu\edu\sportmall\entity\Users.class
+com\cdu\edu\sportmall\entity\ProductComments.class
+com\cdu\edu\sportmall\entity\UserAddr.class
+com\cdu\edu\sportmall\entity\Product.class

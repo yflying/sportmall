@@ -1,0 +1,406 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>添加用户</title>
+<meta name="description" content="这是一个 index 页面">
+<meta name="keywords" content="index">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="icon" type="image/png" href="assets/i/favicon.png">
+<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="assets/css/admin.css">
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/app.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!--<link rel="stylesheet" href="static/css/bootstrap.css" />-->
+<script src="static/js/utils.js"></script>
+
+</head>
+<body>
+<!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+<style>
+    input[type="file"] {
+        display: none;
+    }
+ 
+    .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+ 
+    .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+    }
+ 
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+    }
+ 
+    .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
+    }
+</style>
+
+
+
+
+
+
+</head>
+
+<body>
+<header class="am-topbar admin-header">
+  <div class="am-topbar-brand"><img src="assets/i/logo.png"></div>
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+    <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
+
+   <li class="am-dropdown tognzhi" data-am-dropdown>
+  <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 消息管理<span class="am-badge am-badge-danger am-round">6</span></button>
+  <ul class="am-dropdown-content">
+  	
+  	
+  	
+    <li class="am-dropdown-header">所有消息都在这里</li>
+
+    
+
+    <li><a href="#">未激活会员 <span class="am-badge am-badge-danger am-round">556</span></a></li>
+    <li><a href="#">未激活代理 <span class="am-badge am-badge-danger am-round">69</span></a></a></li>
+    <li><a href="#">未处理汇款</a></li>
+    <li><a href="#">未发放提现</a></li>
+    <li><a href="#">未发货订单</a></li>
+    <li><a href="#">低库存产品</a></li>
+    <li><a href="#">信息反馈</a></li>
+    
+    
+    
+  </ul>
+</li>
+
+
+
+
+
+
+  </div>
+</header>
+
+<div class="am-cf admin-main"> 
+
+
+ <div class="nav-navicon admin-main admin-sidebar">
+    
+    
+    <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员</div>
+    <div class="sideMenu" style="font-size: 1.4rem;">
+    	<h3 class="am-icon-users on"><em></em> <a href="#">用户管理</a></h3>
+      <ul>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="用户列表.html">用户列表</a></li>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="添加用户.html">添加用户</a></li>
+      </ul>
+      <h3 class="am-icon-flag"><em></em> <a href="#">商品管理</a></h3>
+      <ul>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="商品列表.html">商品列表</a></li>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="添加新商品.html">添加新商品</a></li>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="商品统计.html">商品统计</a></li>
+      </ul>
+        <h3 class="am-icon-gears"><em></em> <a href="#">商品分类管理</a></h3>
+      <ul>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="商品分类.html">商品分类</a></li>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="添加商品分类.html">添加商品分类</a></li>       
+      </ul>    
+      <h3 class="am-icon-cart-plus"><em></em> <a href="订单列表.html"> 订单管理</a></h3>
+      <ul>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="订单列表.html">订单列表</a></li>
+ 				 <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="订单统计.html">订单统计</a></li>
+      </ul>
+      <h3 class="am-icon-volume-up"><em></em> <a href="#">评论管理</a></h3>
+      <ul>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="评论列表.html">评论列表</a></li>
+ 				 <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="评论统计.html">评论统计</a></li>
+      </ul>
+    
+    </div>
+    <!-- sideMenu End --> 
+    
+   <script type="text/javascript">
+			jQuery(".sideMenu").slide({
+				titCell:"h3", //鼠标触发对象
+				targetCell:"ul", //与titCell一一对应，第n个titCell控制第n个targetCell的显示隐藏
+				effect:"slideDown", //targetCell下拉效果
+				delayTime:300 , //效果时间
+				triggerTime:150, //鼠标延迟触发时间（默认150）
+				defaultPlay:true,//默认是否执行效果（默认true）
+				returnDefault:true //鼠标从.sideMen移走后返回默认状态（默认false）
+				});
+		</script> 
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+<div class=" admin-content">
+	
+		<div class="daohang">
+			<ul>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 首页 </li>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs">用户管理<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a></button></li>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs">商品管理<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a></button></li>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs">订单管理<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a></button></li>
+				
+				
+			</ul>
+
+       
+
+	
+</div>
+	
+	
+
+
+<div class="admin-biaogelist">
+	
+    <div class="listbiaoti am-cf">
+      <ul class="am-icon-flag on"> 添加用户</ul>
+      
+      <dl class="am-icon-home" style="float: right;"> 当前位置： 首页 > <a href="添加用户.html">添加用户</a></dl>
+      
+      <dl>
+        
+      </dl>
+      
+      
+    </div>
+        <div class="fbneirong">
+  <div id="container">
+
+<div class="box-container-bottom" style="margin-bottom: 15px;">
+<div style="width: 1000px; text-align: center ; height: 500px;">
+	 <el-form :model="insertUserForm" ref="insertUserForm" label-width="80px"  :rules="rules"  size="small" :label-position="labelPosition"  style="display: inline-block;">
+												    <el-form-item label="用户名称" prop="username"  style="width: 300px" required >
+												      <el-input v-model="insertUserForm.username" autocomplete="off"  ></el-input>
+												    </el-form-item>
+												    <el-form-item label="密码"  prop="password"  style="" required>
+												    <el-input placeholder="请输入密码" v-model="insertUserForm.password" show-password style="width: 300px"></el-input>
+												   </el-form-item>
+													<el-form-item label="性别" prop="userSex" style="width: 200px;" required>
+													    <el-radio-group v-model="insertUserForm.userSex">
+													      <el-radio label="男" ></el-radio>
+													      <el-radio label="女"></el-radio>
+													    </el-radio-group>
+													  </el-form-item>				
+														 <el-form-item label="生日" >
+														    <el-col :span="11">
+														      <el-form-item prop="userBirth">
+														        <el-date-picker type="date" placeholder="选择日期" v-model="insertUserForm.userBirth" style="width: 100%;"></el-date-picker>
+														      </el-form-item>
+														    </el-col>
+														  </el-form-item>													  
+
+												    <el-form-item label="真实姓名"  prop="realname" style="" >
+												      <el-input v-model="insertUserForm.realname" autocomplete="off" style="width: 300px"></el-input>
+												    </el-form-item>
+							   
+												    <el-form-item label="手机号" prop="userMobile" style="" >
+												      <el-input v-model="insertUserForm.userMobile" autocomplete="off" style="width: 300px"></el-input>
+												    </el-form-item>
+												    <el-form-item label="邮箱地址" prop="userEmail" style="">
+												      <el-input v-model="insertUserForm.userEmail" autocomplete="off" style="width: 300px"></el-input>
+												    </el-form-item>
+										        <el-form-item label="上传头像" ref="insertUserForm" prop="userImg"  >
+										            <el-input v-model="insertUserForm.userImg" v-if="false" style="width: 100px;"></el-input>
+										            <el-upload
+										                    class="avatar-uploader"
+										                    ref="upload"
+										                    :show-file-list="false"
+										                    :action="actionUrl"
+										                    :before-upload="beforeUpload"
+										                   :on-change='changeUpload'
+										                    :auto-upload="false"
+										                    :data="insertUserForm">
+											              <img v-if="insertUserForm.userImg" :src="insertUserForm.userImg" class="avatar">
+											              <i v-else style="line-height: 178px;" class="el-icon-plus avatar-uploader-icon"></i>
+
+										            </el-upload>
+										        </el-form-item>
+												    
+												  </el-form></br>
+												  <div style="display: inline-block;">
+												    <el-button type="primary" @click="submitForm('insertUserForm')" plain>添加用户</el-button>
+												    </div>
+</div>
+</div>
+</div>
+
+
+</div>
+
+</div>
+</div>
+
+
+ 
+
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+</div>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]--> 
+
+<!--<![endif]-->
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+		<script type="text/javascript" src="static/js/cookie_utils.js" ></script>
+		<script type="text/javascript" src="static/js/axios.min.js" ></script>
+		<script type="text/javascript" src="static/js/vue.js" ></script>
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script type="text/javascript" src="static/js/base.js" ></script>
+		<script type="text/javascript">
+			var v = new Vue({
+				el:"#container",
+				data:{
+					userId:"",
+					size:'',
+					input:'',
+					insertUserForm:{
+						userId:'',
+						username:'',
+						password:'',
+						nickname:'',
+						realname:'',
+						userImg:'',
+						userMobile:'',
+						userEmail:'',
+						userSex:'',
+						userBirth:'',
+						userRegtime:'',
+						userModtime:'',
+					},
+					rules:{
+						
+					},
+					ImgUrl:'',
+					labelPosition:'left',
+					actionUrl:'http://localhost:8080/user/insertUser',
+				},
+				methods:{
+
+							    changeUpload(file) {
+							      let fileName=file.name;
+										this.ImgUrl=file.name;
+										console.log(this.ImgUrl);
+							      let regex =/(.jpg|.jpeg)$/ //匹配图片类型
+							      /*toLowerCase()将字符串转化为小写，返回一个新的字符串，其中的大写全部转为小写*/
+							      if (regex.test(fileName.toLowerCase())){
+							
+							        //URL.createObjectURL() 静态方法会创建一个 DOMString，其中包含一个表示参数中给出的对象的URL
+							        //这个 URL 的生命周期和创建它的窗口中的 document 绑定。这个新的URL 对象表示指定的 File 对象或 Blob 对象。
+							        this.insertUserForm.userImg=URL.createObjectURL(file.raw)
+								
+							      }
+							    },
+ 
+            beforeUpload(file) {
+                return true;
+            },
+
+
+						
+            submitForm(formName) {
+            	
+            	console.log(this.insertUserForm)
+                let vm = this;
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                    		this.insertUserForm.userBirth=rTime(this.insertUserForm.userBirth);
+                    		console.log(this.insertUserForm.userBirth)
+                        vm.$refs.upload.submit();
+                         
+                    } else {
+                        return false;
+                    }
+                });
+       this.$message({
+          message: '添加成功',
+          type: 'success'
+        });
+               this.dialogFormVisible = false;
+               
+				 setTimeout(function (){
+					window.location.href="添加用户.html";
+				}, 500);
+ 
+			
+            },
+  
+            
+            
+
+				},
+								filters: {
+            time: (value) => {
+            	return rTime(value);
+            }
+      },
+				
+
+});
+
+		</script>
+
+
+</body>
+</html>

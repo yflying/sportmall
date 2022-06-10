@@ -1,0 +1,661 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>用户列表</title>
+<meta name="description" content="这是一个 index 页面">
+<meta name="keywords" content="index">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="icon" type="image/png" href="assets/i/favicon.png">
+<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="assets/css/admin.css">
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/app.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!--<link rel="stylesheet" href="static/css/bootstrap.css" />-->
+<script src="static/js/utils.js"></script>
+
+</head>
+<body>
+<!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+<style>
+    input[type="file"] {
+        display: none;
+    }
+ 
+    .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+ 
+    .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+    }
+ 
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+    }
+ 
+    .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
+    }
+</style>
+
+
+
+
+
+
+</head>
+
+<body>
+<header class="am-topbar admin-header">
+  <div class="am-topbar-brand"><img src="assets/i/logo.png"></div>
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+    <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
+
+   <li class="am-dropdown tognzhi" data-am-dropdown>
+  <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 消息管理<span class="am-badge am-badge-danger am-round">6</span></button>
+  <ul class="am-dropdown-content">
+  	
+  	
+  	
+    <li class="am-dropdown-header">所有消息都在这里</li>
+
+    
+
+    <li><a href="#">未激活会员 <span class="am-badge am-badge-danger am-round">556</span></a></li>
+    <li><a href="#">未激活代理 <span class="am-badge am-badge-danger am-round">69</span></a></a></li>
+    <li><a href="#">未处理汇款</a></li>
+    <li><a href="#">未发放提现</a></li>
+    <li><a href="#">未发货订单</a></li>
+    <li><a href="#">低库存产品</a></li>
+    <li><a href="#">信息反馈</a></li>
+    
+    
+    
+  </ul>
+</li>
+
+
+
+
+
+
+  </div>
+</header>
+
+<div class="am-cf admin-main"> 
+
+
+ <div class="nav-navicon admin-main admin-sidebar">
+    
+    
+    <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员</div>
+    <div class="sideMenu" style="font-size: 1.4rem;">
+    	<h3 class="am-icon-users on"><em></em> <a href="用户列表.html">用户管理</a></h3>
+      <ul>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="用户列表.html">用户列表</a></li>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="添加用户.html">添加用户</a></li>
+      </ul>
+      <h3 class="am-icon-flag"><em></em> <a href="商品列表.html">商品管理</a></h3>
+      <ul>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="商品列表.html">商品列表</a></li>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="添加新商品.html">添加新商品</a></li>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="商品统计.html">商品统计</a></li>
+      </ul>
+        <h3 class="am-icon-gears"><em></em> <a href="商品分类.html">商品分类管理</a></h3>
+      <ul>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="商品分类.html">商品分类</a></li>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="添加商品分类.html">添加商品分类</a></li>       
+      </ul>    
+      <h3 class="am-icon-cart-plus"><em></em> <a href="订单列表.html"> 订单管理</a></h3>
+      <ul>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="订单列表.html">订单列表</a></li>
+ 				 <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="订单统计.html">订单统计</a></li>
+      </ul>
+      <h3 class="am-icon-volume-up"><em></em> <a href="评论列表.html">评论管理</a></h3>
+      <ul>
+         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="评论列表.html">评论列表</a></li>
+ 				 <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="评论统计.html">评论统计</a></li>
+      </ul>
+    
+    </div>
+    <!-- sideMenu End --> 
+    
+   <script type="text/javascript">
+			jQuery(".sideMenu").slide({
+				titCell:"h3", //鼠标触发对象
+				targetCell:"ul", //与titCell一一对应，第n个titCell控制第n个targetCell的显示隐藏
+				effect:"slideDown", //targetCell下拉效果
+				delayTime:300 , //效果时间
+				triggerTime:150, //鼠标延迟触发时间（默认150）
+				defaultPlay:true,//默认是否执行效果（默认true）
+				returnDefault:true //鼠标从.sideMen移走后返回默认状态（默认false）
+				});
+		</script> 
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+<div class=" admin-content">
+	
+		<div class="daohang">
+			<ul>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 首页 </li>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs">用户管理<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a></button></li>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs">商品管理<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a></button></li>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs">订单管理<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a></button></li>
+				
+				
+			</ul>
+
+       
+
+	
+</div>
+	
+	
+
+
+<div class="admin-biaogelist">
+	
+    <div class="listbiaoti am-cf">
+      <ul class="am-icon-flag on"> 用户列表</ul>
+      
+      <dl class="am-icon-home" style="float: right;"> 当前位置： 首页 > <a href="用户列表.html">用户列表</a></dl>
+      
+      <dl>
+        
+      </dl>
+      
+      
+    </div>
+	 <div id="container">
+
+<div class="box-container-bottom" style="margin-bottom: 15px;">
+<div style="background-color: white; margin-left: 12px; margin-right: 12px;">
+			  <el-input v-model="keywords"
+			    placeholder="请输入内容"
+			    prefix-icon="el-icon-search" @keyup.enter.native="search"  style="width: 300px;  margin-top: -2px; ">
+			  </el-input>
+</div>
+	<el-table  :data="users"  border fit highlight-current-row>
+
+					      <el-table-column
+					        label="序号"
+					        width="100"
+					        align="center">
+					        <template slot-scope="scope">
+					          {{ (pageNum - 1) * limit + scope.$index + 1 }}
+					        </template>
+					      </el-table-column>
+					      <el-table-column label="用户名称" width="150">
+					        <template slot-scope="scope">
+					          {{scope.row.username}}
+					 
+					        </template>
+					      </el-table-column>
+									<el-table-column label="密码" width="300">
+					        <template slot-scope="scope">
+					          {{scope.row.password}}
+					        </template>
+					      </el-table-column>
+					      <el-table-column label="头像" width="150">
+					        <template slot-scope="scope">
+					            <el-row class="demo-avatar demo-basic">
+											    <el-col :span="12">
+											      <div class="demo-basic--circle">
+											        <div class="block">
+											        	<el-avatar :size="50" :src="'static/'+scope.row.userImg" :key="'static/'+scope.row.userImg">
+																<v-img :src="'static/'+scope.row.userImg" />
+											        </el-avatar></div>
+											      </div>
+											    </el-col>  
+											  </el-row>
+					        </template>
+					      </el-table-column>
+					
+					      <el-table-column label="性别" width="100">
+					        <template slot-scope="scope">
+									<template v-if="scope.row.userSex == 'M'" >
+					         <span>男</span>
+					        </template>
+									<template v-if="scope.row.userSex == 'F'" >
+					         <span>女</span>
+					        </template>
+					        </template>
+					      </el-table-column>
+					      <el-table-column label="注册时间" width="260">
+					        <template slot-scope="scope">
+					          {{scope.row.userRegtime | time}}
+					         
+					        </template>
+					      </el-table-column>
+					      <el-table-column  label="操作" sortable width="240">
+
+					      	<template slot-scope="scope">
+
+										<el-button size="small" type="primary"  @click="dianji(scope.row)">查看</el-button>
+
+										  <el-dialog title="用户详情" :visible.sync="outerVisible" :append-to-body='true'>
+												<el-descriptions class="margin-top" :column="2" :size="size" border>
+												    <el-descriptions-item label="用户名">
+																<span>{{userDetail.username}}</span>
+												    </el-descriptions-item>
+												    <el-descriptions-item label="头像路径">
+											        <span>{{userDetail.userImg}}</span>
+												    </el-descriptions-item>
+												    <el-descriptions-item label="真实姓名">
+														 <span>{{userDetail.realname}}</span>												    															    	
+												    </el-descriptions-item>
+												    <el-descriptions-item label="手机号">
+														 <span>{{userDetail.userMobile}}</span>							    	
+												    </el-descriptions-item>
+												    <el-descriptions-item label="邮箱地址">
+														 <span>{{userDetail.userEmail}}</span>						    	
+												    </el-descriptions-item>		
+												    <el-descriptions-item label="性别">
+														<template v-if="userDetail.userSex == 'M'" >
+										         <span>男</span>
+										        </template>
+														<template v-if="userDetail.userSex == 'F'" >
+										         <span>女</span>
+										        </template>						    	
+												    </el-descriptions-item>
+												    <el-descriptions-item label="生日">
+														 <span>{{userDetail.userBirth}}</span>							    	
+												    </el-descriptions-item>
+												    <el-descriptions-item label="更新时间">
+														 <span>{{userDetail.userModtime | time}}</span>												    	
+												    </el-descriptions-item>
+												  </el-descriptions>
+												 
+									  </el-dialog>
+									  
+									  
+									<el-button size="small" type="success"    style="margin-left: 10px;" @click="bianji(scope.row) ">编辑</el-button>
+												<el-dialog title="修改用户信息" :visible.sync="dialogFormVisible" :append-to-body='true'>
+												  <el-form :model="updateUserForm" ref="updateUserForm" label-width="80px" inline :rules="rules"  size="mini" :label-position="labelPosition">
+												    <el-form-item label="用户名称" prop="username"  >
+												      <el-input v-model="updateUserForm.username" autocomplete="off"></el-input>
+												    </el-form-item>
+										        <el-form-item label="上传图片" ref="uploadElement" prop="userImg" >
+										            <el-input v-model="updateUserForm.userImg" v-if="false"></el-input>
+										            <el-upload
+										                    class="avatar-uploader"
+										                    ref="upload"
+										                    :show-file-list="false"
+										                    :action="actionUrl"
+										                    :before-upload="beforeUpload"
+										                   :on-change='changeUpload'
+										                    :auto-upload="false"
+										                    :data="updateUserForm">
+											              <img v-if="updateUserForm.userImg" :src="updateUserForm.userImg" class="avatar">
+											              <i v-else style="line-height: 178px;" class="el-icon-plus avatar-uploader-icon"></i>
+
+										            </el-upload>
+										        </el-form-item>
+
+							
+												    <el-form-item label="真实姓名"  prop="realname">
+												      <el-input v-model="updateUserForm.realname" autocomplete="off"></el-input>
+												    </el-form-item>
+												    <el-form-item label="密码"  prop="password" maxlength="10">
+												    <el-input placeholder="请输入密码" v-model="updateUserForm.password" show-password></el-input>
+												   </el-form-item>
+												    <el-form-item label="手机号" prop="userMobile">
+												      <el-input v-model="updateUserForm.userMobile" autocomplete="off"></el-input>
+												    </el-form-item>
+												    <el-form-item label="邮箱地址" prop="userEmail">
+												      <el-input v-model="updateUserForm.userEmail" autocomplete="off"></el-input>
+												    </el-form-item>
+												    
+												  </el-form>
+												  <div slot="footer" class="dialog-footer">
+
+												    <el-button type="primary" @click="submitForm('updateUserForm')" plain>确 定</el-button>
+													    <el-button @click="dialogFormVisible = false">取 消</el-button>											    
+												  </div>
+												</el-dialog>
+
+									<el-button type="danger" size="small" @click="shanchu(scope.row) " style="margin-left: 10px;">删除</el-button>
+									</template>
+									
+									</el-table-column>
+
+					    </el-table>
+								<div style="text-align: center">
+															<el-pagination background layout="prev, pager, next" 
+								               :current-page="pageNum"
+								               :page-size="limit" 
+								               :total="count" @current-change="pager" > </el-pagination>
+								</div>
+
+</div>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+
+
+ 
+
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+</div>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]--> 
+
+<!--<![endif]-->
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+		<script type="text/javascript" src="static/js/cookie_utils.js" ></script>
+		<script type="text/javascript" src="static/js/axios.min.js" ></script>
+		<script type="text/javascript" src="static/js/vue.js" ></script>
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script type="text/javascript" src="static/js/base.js" ></script>
+		<script type="text/javascript">
+			
+			var v = new Vue({
+				el:"#container",
+				data:{
+					pageNum:1,
+					limit:5,
+					users:[],
+					count:0,
+					keywords:"",
+					outerVisible: false,
+					innerVisible: false,
+					dialogFormVisible:false,
+					userId:"",
+					size:'',
+					userDetail:{},
+					input:'',
+					updateUserForm:{
+						userId:'',
+						username:'',
+						password:'',
+						nickname:'',
+						realname:'',
+						userImg:'',
+						userMobile:'',
+						userEmail:'',
+						userSex:'',
+						userBirth:'',
+						userRegtime:'',
+						userModtime:'',
+					},
+					rules:{
+						
+					},
+					ImgUrl:'',
+					labelPosition:'left',
+					actionUrl:'http://localhost:8080/user/updateUser',
+				},
+				created:function(){
+					//1.加载页面，请求订单信息
+					var url1 = baseUrl+"user/list-all";
+					axios({
+						url:url1,
+						method:"get",
+						params:{
+							pageNum:this.pageNum,
+							limit:this.limit
+						}
+					}).then((res)=>{
+						console.log(res.data.data);
+						if(res.data.code == 10000){
+							var map = res.data.data
+							this.users = map.list;
+							this.count = map.count;
+						}
+					});
+				},
+				methods:{
+					pager:function(page){
+
+						this.pageNum = page;
+						//1.加载页面，请求订单信息
+						var url1 = baseUrl+"user/list-all";
+						var obj = {
+								pageNum:this.pageNum,
+								limit:this.limit
+						};
+						if(this.keywords!=null){
+							obj.keywords = this.keywords;
+						}
+						console.log(obj)
+						axios({
+							url:url1,
+							method:"get",
+							params:{
+								pageNum:obj.pageNum,
+																	limit:obj.limit,
+																	keyword:obj.keywords
+							}
+						}).then((res)=>{
+							console.log(res.data.data);
+							if(res.data.code == 10000){
+								this.users = res.data.data.list;
+								this.count = res.data.data.count;
+							}
+						});
+					},
+					  search(){
+						 	  // 控制一下，如果用户没输入东西就不去搜索
+						   if(this.keywords != null){
+						    // 把searchData带着，发请求获取有关联的数据并呈现在页面中
+						    						this.pageNum = 1;
+															var url1 = baseUrl+"user/list-all";
+															axios({
+																url:url1,
+																method:"get",
+																params:{
+																	pageNum:this.pageNum,
+																	limit:this.limit,
+																	keyword:this.keywords
+																}
+															}).then((res)=>{
+																console.log(res.data.data);
+																if(res.data.code == 10000){
+																	this.users = res.data.data.list;
+																	this.count = res.data.data.count;
+																}
+															});	
+						   }
+						  },
+						  dianji(val){
+						  			this.userId=val.userId;
+										var url1 = baseUrl+"user/detail-info/"+this.userId;
+									 axios.get(url1).then((res)=>{
+									 	this.userDetail=res.data.data;
+									 	this.userDetail=this.userDetail[0];
+									 	
+									});		
+										this.outerVisible=true;
+						  },
+						   bianji(val){
+						  			this.userId=val.userId;
+										var url1 = baseUrl+"user/detail-info/"+this.userId;
+									 axios.get(url1).then((res)=>{
+									 	this.userDetail=res.data.data;
+									 	this.userDetail=this.userDetail[0];
+									 	this.updateUserForm.userId=this.userDetail.userId;
+									 this.updateUserForm.username=this.userDetail.username;
+									 this.updateUserForm.password=this.userDetail.password;
+									 this.updateUserForm.realname=this.userDetail.realname;
+									 this.updateUserForm.userMobile=this.userDetail.userMobile;
+									 this.updateUserForm.userEmail=this.userDetail.userEmail;
+									  this.updateUserForm.userSex=this.userDetail.userSex;
+									   this.updateUserForm.userBirth=this.userDetail.userBirth;
+									    this.updateUserForm.userRegtime=this.userDetail.userRegtime;
+									    this.updateUserForm.userModtime=this.userDetail.userModtime;
+									 	console.log(this.updateUserForm);
+									});		
+
+									 console.log(this.updateUserForm)
+										this.dialogFormVisible=true;
+						  },
+						  
+							    changeUpload(file) {
+							      let fileName=file.name;
+										this.ImgUrl=file.name;
+										console.log(this.ImgUrl);
+							      let regex =/(.jpg|.jpeg)$/ //匹配图片类型
+							      /*toLowerCase()将字符串转化为小写，返回一个新的字符串，其中的大写全部转为小写*/
+							      if (regex.test(fileName.toLowerCase())){
+							
+							        //URL.createObjectURL() 静态方法会创建一个 DOMString，其中包含一个表示参数中给出的对象的URL
+							        //这个 URL 的生命周期和创建它的窗口中的 document 绑定。这个新的URL 对象表示指定的 File 对象或 Blob 对象。
+							        console.log(typeof URL.createObjectURL(file.raw));
+							        this.updateUserForm.userImg=URL.createObjectURL(file.raw)
+								
+							      }
+							    },
+ 
+            beforeUpload(file) {
+                return true;
+            },
+
+
+						
+            submitForm(formName) {
+                let vm = this;
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+						this.updateUserForm.userImg=this.ImgUrl;
+                        vm.$refs.upload.submit();
+                         
+                    } else {
+                        return false;
+                    }
+                });
+                               
+//      this.$alert('修改成功', '提示', {
+//        confirmButtonText: '确定',
+//        callback: action => {
+//          window.location.href="会员列表.html";
+//          this.dialogFormVisible = false;
+//        }
+//        
+//      });
+       this.$message({
+          message: '修改成功',
+          type: 'success'
+        });
+               this.dialogFormVisible = false;
+               
+				 setTimeout(function (){
+					window.location.href="用户列表.html";
+				}, 500);
+ 
+			
+            },
+					shanchu(val){
+							this.$confirm('是否确认删除用户?', '提示', {
+							         cancelButtonText: '取消',							         
+							         confirmButtonText: '确定',
+							          type: 'warning'
+							        }).then(() => {
+							        	this.userId=val.userId;
+										var url1 = baseUrl+"user/deleteUser/"+this.userId;
+									 axios.get(url1).then((res)=>{
+									});	
+							          this.$message({
+							            type: 'success',
+							            message: '删除成功!'
+							          });
+									 setTimeout(function (){
+										window.location.href="用户列表.html";
+									}, 500);							          
+							        }).catch(() => {
+							          this.$message({
+							            type: 'info',
+							            message: '已取消删除'
+							          });          
+							        });
+						  },            
+            
+            
+
+				},
+				
+				filters: {
+            time: (value) => {
+            	return rTime(value);
+            }
+      },
+      watch:{
+				  // 监听input输入框，若没东西了，就回复默认状态
+				  keywords:function(newnew,oldold){
+				   if(newnew == ""){
+				    // 发请求回到初始列表数据状态
+				    console.log("搜索框没东西了，回复初始状态");
+				   }
+				  }
+				 },
+});
+
+		</script>
+
+
+</body>
+</html>

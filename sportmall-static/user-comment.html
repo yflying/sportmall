@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/app.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!--<link rel="stylesheet" href="static/css/bootstrap.css" />-->
+<script src="static/js/utils.js"></script>		
+	</head>
+	<body>
+ 
+<div id="container">
+<div class="box-container-bottom" style="margin-bottom: 15px;">
+<div style="background-color: #FFFFFF; width: 800px ; height: 500px;">
+<el-table  :data="comments"  border fit highlight-current-row>
+	      <el-table-column
+	        label="序号"
+	        width="50"
+	        align="center">
+	        <template slot-scope="scope">
+	          {{ (pageNum - 1) * limit + scope.$index + 1 }}
+	        </template>
+	      </el-table-column>
+	      <el-table-column label="商品名称" width="110">
+	        <template slot-scope="scope">
+	          {{scope.row.productName}}
+	 
+	        </template>
+	      </el-table-column>
+
+					<el-table-column label="评价类型" width="80">
+	        <template slot-scope="scope">
+					          <span v-if="scope.row.commType == '1'">好评</span>
+									<span v-else-if="scope.row.commType == '0'">中评</span>
+									<span v-else-if="scope.row.commType == '-1'">差评</span>
+	        </template>
+	      </el-table-column>
+	
+	      <el-table-column label="评价内容" width="150">
+	        <template slot-scope="scope">
+	          {{scope.row.commContent}}
+	        </template>
+	      </el-table-column>
+	      <el-table-column label="评价时间" width="100">
+	        <template slot-scope="scope">
+	          {{scope.row.sepcName | time}}
+	        </template>
+	      </el-table-column>
+	      	      <el-table-column label="是否回复" width="120">
+	        <template slot-scope="scope">
+					          <span v-if="scope.row.replyStatus == '1'">已回复</span>
+									<span v-else-if="scope.row.replyStatus == '0'">未回复</span>
+	        </template>
+	      </el-table-column>
+	      <el-table-column  label="操作" sortable width="185">
+
+	      	<template slot-scope="scope">				  
+	      							      <template v-if="scope.row.replyStatus == '1'">
+							 	<el-button type="primary" plain  size="small" style="margin-left: 10px;" @click="outerVisible=true;" plain>查看</el-button>
+							 	 <el-dialog title="用户详情" :visible.sync="outerVisible" :append-to-body='true'>
+												<el-descriptions class="margin-top" :column="2" :size="size" border direction="vertical">
+												    <el-descriptions-item label="回复内容" style="width: 300px;">
+																<span>{{scope.row.replyContent}}</span>
+												    </el-descriptions-item>
+												    <el-descriptions-item label="回复时间">
+											        <span>{{scope.row.replyTime |time}}</span>
+												    </el-descriptions-item>				 
+									  </el-dialog>
+									</template>
+					
+					<el-button type="danger" size="small" @click="shanchu(scope.row) " style="margin-left: 10px;" plain>删除</el-button>
+					</template>
+					</el-table-column>
+
+	   </el-table>
+	   								<div style="text-align: center">
+															<el-pagination background layout="prev, pager, next" 
+								               :current-page="pageNum"
+								               :page-size="limit" 
+								               :total="count" @current-change="pager" > </el-pagination>
+								</div>
+</div>
+</div>
+</div>
+					    
+
+		<script type="text/javascript" src="static/js/cookie_utils.js" ></script>
+		<script type="text/javascript" src="static/js/axios.min.js" ></script>
+		<script type="text/javascript" src="static/js/vue.js" ></script>
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script type="text/javascript" src="static/js/base.js" ></script>
+		<script type="text/javascript">
+			
+			var v = new Vue({
+				el:"#container",
+				data:{
+					pageNum:1,
+					limit:2,
+					count:0,					
+					comments:[],
+					updateUserCommentsForm:{
+						commId:'',
+						productId:'',
+						productName:'',
+						orderItemId:'',
+						userId:'',
+						isAnonymous:'',
+						commType:'',
+						commContent:'',
+						commImgs:'',
+						specTime:'',
+						replyStatus:'',
+						replyContent:'',
+						replyTime:'',
+						isShow:'',
+					},
+					rules:{
+						
+					},
+					userCommentsDetail:{},
+					labelPosition:'left',
+					addrIndex:0,  //用户选择的地址的索引（默认值和当前用户地址的默认地址索引相同）					
+
+					dialogFormVisible:false,		
+										outerVisible: false,
+										size:'',		
+					commId:'',					
+				},
+				created:function(){
+
+					var userId = getCookieValue("userId");
+					var token = getCookieValue("token");		
+					var url1 = baseUrl+"user/comments-list";
+					axios({
+						url:url1,
+						method:"get",
+						params:{
+							pageNum:this.pageNum,
+							limit:this.limit,
+							userId:userId,
+						}
+					}).then((res)=>{
+						console.log(res.data.data);
+						if(res.data.code == 10000){
+							var map = res.data.data
+							this.comments = map.list;
+							this.count = map.count;
+						}
+					});
+				},
+				methods:{
+
+					shanchu(val){
+						
+							this.$confirm('是否确认删除评价?', '提示', {
+							         cancelButtonText: '取消',							         
+							         confirmButtonText: '确定',
+							          type: 'warning'
+							        }).then(() => {
+							        	this.commId=val.commId;
+										var url1 = baseUrl+"user/deleteUserComments/"+this.commId;
+									 axios.get(url1).then((res)=>{
+									});	
+							          this.$message({
+							            type: 'success',
+							            message: '删除成功!'
+							          });
+									 setTimeout(function (){
+										parent.location.href="user-center.html";
+									}, 500);							          
+							        }).catch(() => {
+							          this.$message({
+							            type: 'info',
+							            message: '已取消删除'
+							          });          
+							        });
+						  },            
+ 					pager:function(page){
+					var userId = getCookieValue("userId");
+						this.pageNum = page;
+						//1.加载页面，请求订单信息
+						var url2 = baseUrl+"user/comments-list";
+
+
+						axios({
+							url:url2,
+							method:"get",
+							params:{
+								pageNum:this.pageNum,
+								limit:this.limit,
+							    userId:userId
+							}
+						}).then((res)=>{
+							console.log(res.data.data);
+							if(res.data.code == 10000){
+								this.comments = res.data.data.list;
+								this.count = res.data.data.count;
+							}
+						});
+					},
+            
+
+				},
+				
+				filters: {
+            time: (value) => {
+            	return rTime(value);
+            }
+      },
+
+});
+
+		</script>
+
+	</body>
+</html>

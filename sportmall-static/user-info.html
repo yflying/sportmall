@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="assets/css/admin.css">
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/app.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!--<link rel="stylesheet" href="static/css/bootstrap.css" />-->
+<script src="static/js/utils.js"></script>
+	</head>
+	<body>
+		<style>
+			  input[type="file"] {
+        display: none;
+    }
+ 
+    .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+ 
+    .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+    }
+ 
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+    }
+ 
+    .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
+    }
+		</style>
+		
+<div id="container">
+
+<div class="box-container-bottom" style="margin-bottom: 15px;">
+<div style="width: 1000px; height: 500px; margin-left: 20px; margin-top: 10px; margin-right: 10px; width: 730px;">
+	
+	<el-descriptions class="margin-top" :column="1" :size="size" border>
+												    <el-descriptions-item label="用户名">
+																<span>{{userDetail.username}}</span>
+												    </el-descriptions-item>
+												    <el-descriptions-item label="真实姓名">
+														 <span>{{userDetail.realname}}</span>												    															    	
+												    </el-descriptions-item>
+												    <el-descriptions-item label="手机号">
+														 <span>{{userDetail.userMobile}}</span>							    	
+												    </el-descriptions-item>
+												    <el-descriptions-item label="邮箱地址">
+														 <span>{{userDetail.userEmail}}</span>						    	
+												    </el-descriptions-item>		
+												    <el-descriptions-item label="性别">
+														<template v-if="userDetail.userSex == 'M'" >
+										         <span>男</span>
+										        </template>
+														<template v-if="userDetail.userSex == 'F'" >
+										         <span>女</span>
+										        </template>						    	
+												    </el-descriptions-item>
+												    <el-descriptions-item label="生日">
+														 <span>{{userDetail.userBirth}}</span>							    	
+												    </el-descriptions-item>
+												    <el-descriptions-item label="更新时间">
+														 <span>{{userDetail.userModtime | time}}</span>												    	
+												    </el-descriptions-item>
+												  </el-descriptions>
+	 
+												  </br>
+												  
+</div>
+</div>
+</div>
+
+
+
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+		<script type="text/javascript" src="static/js/cookie_utils.js" ></script>
+		<script type="text/javascript" src="static/js/axios.min.js" ></script>
+		<script type="text/javascript" src="static/js/vue.js" ></script>
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script type="text/javascript" src="static/js/base.js" ></script>
+		<script type="text/javascript">
+			var v = new Vue({
+				el:"#container",
+				data:{
+					userId:"",
+					size:'',
+					input:'',
+					insertUserForm:{
+						userId:'',
+						username:'',
+						password:'',
+						nickname:'',
+						realname:'',
+						userImg:'',
+						userMobile:'',
+						userEmail:'',
+						userSex:'',
+						userBirth:'',
+						userRegtime:'',
+						userModtime:'',
+				
+					},
+					rules:{
+						
+					},
+					ImgUrl:'',
+					labelPosition:'left',
+					actionUrl:'http://localhost:8080/user/insertUser',
+					token:null,
+					userDetail:{},				
+				},
+				created:function(){
+					//1.加载页面，请求订单信息
+						this.token = getCookieValue("token");
+					this.userId = getCookieValue("userId");				
+					console.log(this.userId)
+										var url1 = baseUrl+"user/detail-info/"+this.userId;
+									 axios.get(url1).then((res)=>{
+									 	this.userDetail=res.data.data;
+									 	this.userDetail=this.userDetail[0];
+									 	this.insertUserForm.userId=this.userDetail.userId;
+									 this.insertUserForm.username=this.userDetail.username;
+									 this.insertUserForm.password=this.userDetail.password;
+									 this.insertUserForm.realname=this.userDetail.realname;
+									 this.insertUserForm.userMobile=this.userDetail.userMobile;
+									 this.insertUserForm.userEmail=this.userDetail.userEmail;
+									  this.insertUserForm.userSex=this.userDetail.userSex;
+									   this.insertUserForm.userBirth=this.userDetail.userBirth;
+									    this.insertUserForm.userRegtime=this.userDetail.userRegtime;
+									    this.insertUserForm.userModtime=this.userDetail.userModtime;
+									});		
+
+				},				
+				methods:{
+
+							    changeUpload(file) {
+							      let fileName=file.name;
+										this.ImgUrl=file.name;
+										console.log(this.ImgUrl);
+							      let regex =/(.jpg|.jpeg)$/ //匹配图片类型
+							      /*toLowerCase()将字符串转化为小写，返回一个新的字符串，其中的大写全部转为小写*/
+							      if (regex.test(fileName.toLowerCase())){
+							
+							        //URL.createObjectURL() 静态方法会创建一个 DOMString，其中包含一个表示参数中给出的对象的URL
+							        //这个 URL 的生命周期和创建它的窗口中的 document 绑定。这个新的URL 对象表示指定的 File 对象或 Blob 对象。
+							        this.insertUserForm.userImg=URL.createObjectURL(file.raw)
+								
+							      }
+							    },
+ 
+            beforeUpload(file) {
+                return true;
+            },
+
+
+						
+            submitForm(formName) {
+            	
+            	console.log(this.insertUserForm)
+                let vm = this;
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                    		this.insertUserForm.userBirth=rTime(this.insertUserForm.userBirth);
+                    		console.log(this.insertUserForm.userBirth)
+                        vm.$refs.upload.submit();
+                         
+                    } else {
+                        return false;
+                    }
+                });
+       this.$message({
+          message: '添加成功',
+          type: 'success'
+        });
+               this.dialogFormVisible = false;
+               
+				 setTimeout(function (){
+					window.location.href="添加用户.html";
+				}, 500);
+ 
+			
+            },
+  
+            
+            
+
+				},
+								filters: {
+            time: (value) => {
+            	return rTime(value);
+            }
+      },
+				
+
+});
+
+		</script>
+
+
+	</body>
+</html>
